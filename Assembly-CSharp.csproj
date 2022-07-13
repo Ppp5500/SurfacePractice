@@ -58,6 +58,8 @@
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Creator\Assets\MC_CreateMatCap.cs" />
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_AutoRotate.cs" />
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_SwitchTexture.cs" />
+     <Compile Include="Assets\QuestButtonForm.cs" />
+     <Compile Include="Assets\Scripts\AbstractQuest.cs" />
      <Compile Include="Assets\Scripts\ButtonMain.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\CombineMeshes.cs" />
@@ -70,13 +72,13 @@
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\PlayerDetectWithEvents.cs" />
      <Compile Include="Assets\Scripts\PlayerFollow.cs" />
-     <Compile Include="Assets\Scripts\QuestInfo.cs" />
      <Compile Include="Assets\Scripts\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Range2Attribute.cs" />
      <Compile Include="Assets\Scripts\Range2Drawer.cs" />
      <Compile Include="Assets\Scripts\Range2Test.cs" />
      <Compile Include="Assets\Scripts\RaycastManager.cs" />
      <Compile Include="Assets\Scripts\Recipe.cs" />
+     <Compile Include="Assets\Scripts\RegisterQuestTest.cs" />
      <Compile Include="Assets\Scripts\SceneAttribute.cs" />
      <Compile Include="Assets\Scripts\SceneDrawer.cs" />
      <Compile Include="Assets\Scripts\WindowExample.cs" />
