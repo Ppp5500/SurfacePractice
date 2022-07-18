@@ -30,4 +30,13 @@ namespace SimpleName
                 Debug.Log("Can't Register");
         }
     }
+
+    class MyQuest : Quest
+    {
+        public MyQuest(string name, string target, string toolTip, string flaverText)
+            : base(name, target, toolTip, flaverText)
+        {
+            Debug.Log("MyQuest Created!");
+        }
+    }
 }

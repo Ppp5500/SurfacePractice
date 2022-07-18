@@ -36,7 +36,7 @@
 
             float ndotl = dot(s.Normal, lightDir) * 0.5 + 0.5;
 
-            if (ndotl > 0.7)
+            if (ndotl > 0.8)
                 ndotl = 1;
             else
                 ndotl = 0.3;
