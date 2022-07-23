@@ -4,23 +4,29 @@ using UnityEngine;
 
 namespace SimpleName
 {
+    public enum ControlSubject
+    {
+        Player,
+        UI,
+    }
+
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CharacterController))]
     public class PlayerControl : MonoBehaviour
     {
-        private MyInputAction myInputAction;
+        public MyInputAction myInputAction;
         private CharacterController cc;
-        private Vector3 _moveInput;
-        private Vector2 _lookInput;
-        private float _shiftKey;
-        private float _spaceKey;
-        private bool _tabKey;
-        private bool _isPlayerFocus = true;
+        private Vector3 moveInput;
+        private Vector2 lookInput;
+        private float shiftKey;
+        private float spaceKey;
+        private bool tabKey;
         private float _moveSpeed;
         private float _jumpTimer = 0;
         private Animator _anim;
+        private AudioSource _audioSource;
 
-        //public GameObject characterModel;
+        public ControlSubject csubject = ControlSubject.Player;
 
         [Tooltip("카메라가 추적할 트랜스폼")]
         [SerializeField] private GameObject followTransform;
@@ -36,65 +42,63 @@ namespace SimpleName
         [SerializeField] private float _jumpDelay = 1.5f;
         [Tooltip("화면 회전 속도")]
         [SerializeField] private float _camRotationSpeed = 1f;
+        [Tooltip("발소리")]
+        public AudioClip[] audioClips;
 
         void Awake()
         {
             myInputAction = new MyInputAction();
             cc = GetComponent<CharacterController>();
             _anim = GetComponent<Animator>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
         {
-            InputChange();
-        }
-
-        void Start()
-        {
-
+            myInputAction.Player.Enable();
+            myInputAction.UI.Enable();
+            myInputAction.UIInt.Enable();
         }
 
         void Update()
         {
-            GetInput();
+            GetInputPlayer();
+            GetInputUIInt();
             Tab();
+            Move();
             AnimControl();
-            if (_isPlayerFocus)
-            {
-                Move();
-            }
-            
         }
 
         void LateUpdate()
         {
-            if (_isPlayerFocus)
-            {
-                CameraRotate();
-            }
+            CameraRotate();
         }
 
-        private void GetInput()
+        private void GetInputPlayer()
         {
             // keyboard ad
-            _moveInput.x = myInputAction.Player.Move.ReadValue<Vector2>().x;
+            moveInput.x = myInputAction.Player.Move.ReadValue<Vector2>().x;
             // keyboard ws
-            _moveInput.z = myInputAction.Player.Move.ReadValue<Vector2>().y;
+            moveInput.z = myInputAction.Player.Move.ReadValue<Vector2>().y;
 
-            _lookInput = myInputAction.Player.Look.ReadValue<Vector2>();
-            _shiftKey = myInputAction.Player.Run.ReadValue<float>();
-            _spaceKey = myInputAction.Player.Jump.ReadValue<float>();
-            _tabKey = myInputAction.Player.Tab.triggered;
+            lookInput = myInputAction.Player.Look.ReadValue<Vector2>();
+            shiftKey = myInputAction.Player.Run.ReadValue<float>();
+            spaceKey = myInputAction.Player.Jump.ReadValue<float>();
 
-            if (_shiftKey > 0.0f)
+            if (shiftKey > 0.0f)
                 _moveSpeed = _runSpeed;
             else
                 _moveSpeed = _walkSpeed;
         }
 
+        private void GetInputUIInt()
+        {
+            tabKey = myInputAction.UIInt.Tab.triggered;
+        }
+
         private void AnimControl()
         {
-            if (_moveInput != Vector3.zero)
+            if (moveInput != Vector3.zero)
                 _anim.SetFloat("AnimWalkFloat", _moveSpeed);
             else
                 _anim.SetFloat("AnimWalkFloat", 0);
@@ -103,11 +107,11 @@ namespace SimpleName
         private void Move()
         {
             // 카메라 시점
-            Vector3 finalDirection = followTransform.transform.TransformDirection(_moveInput);
+            Vector3 finalDirection = followTransform.transform.TransformDirection(moveInput);
             finalDirection.y = 0;
 
             // 방향 입력이 있을 때만 카메라 시점으로 캐릭터 회전
-            if (_moveInput != Vector3.zero)
+            if (moveInput != Vector3.zero)
             {
                 cc.transform.forward = finalDirection.normalized;
             }
@@ -119,7 +123,7 @@ namespace SimpleName
                     _jumpTimer += Time.deltaTime;
                 }
 
-                if ((_jumpTimer >= _jumpDelay) && (_spaceKey > 0.5))
+                if ((_jumpTimer >= _jumpDelay) && (spaceKey > 0.5))
                 {
                     _anim.SetTrigger("AnimJumpTrigger");
                     _jumpTimer = 0;
@@ -132,8 +136,8 @@ namespace SimpleName
         private void CameraRotate()
         {
             // followTransform을 마우스 입력대로 회전
-            followTransform.transform.rotation *= Quaternion.AngleAxis(_lookInput.y * _camRotationSpeed, Vector3.left);
-            followTransform.transform.rotation *= Quaternion.AngleAxis(_lookInput.x * _camRotationSpeed, Vector3.up);
+            followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.y * _camRotationSpeed, Vector3.left);
+            followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.x * _camRotationSpeed, Vector3.up);
 
             // 추적 대상의 각도
             var angles = followTransform.transform.localEulerAngles;
@@ -154,23 +158,43 @@ namespace SimpleName
             }
             followTransform.transform.localEulerAngles = angles;
         }
-        public void InputChange()
-        {
-            if (myInputAction.Player.enabled)
-                myInputAction.Player.Disable();
-            else
-                myInputAction.Player.Enable();
-        }
 
         private void Tab()
         {
-            if (_tabKey)
+            if (tabKey)
             {
                 if (QuestManager.Instance.IsQuestPanelOpen())
-                    _isPlayerFocus = false;
+                {
+                    csubject = ControlSubject.UI;
+                    SwitchControl(csubject);
+                }
                 else
-                    _isPlayerFocus = true;
+                {
+                    csubject = ControlSubject.Player;
+                    SwitchControl(csubject);
+                }
+                    
             }
+        }
+
+        public void SwitchControl(ControlSubject _subject)
+        {
+            if (_subject == ControlSubject.Player)
+            {
+                myInputAction.Player.Enable();
+                //myInputAction.UI.Disable();
+            }
+            else if (_subject == ControlSubject.UI)
+            {
+                myInputAction.Player.Disable();
+                //myInputAction.UI.Enable();
+            }
+        }
+
+        public void FootstepSound()
+        {
+            var rand = Random.Range(0, 4);
+            _audioSource.PlayOneShot(audioClips[rand]);
         }
     }
 }

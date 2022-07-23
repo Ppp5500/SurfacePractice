@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
+// 주변에 해당 태그를 가진 오브젝트가 감지하는 스크립트
 [DisallowMultipleComponent]
 [RequireComponent(typeof(SphereCollider))]
 public class DetectWithTag : MonoBehaviour

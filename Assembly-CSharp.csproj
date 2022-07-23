@@ -57,23 +57,24 @@
   <ItemGroup>
      <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorController.cs" />
      <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorToggle.cs" />
-     <Compile Include="Assets\DialoguePanelScaler.cs" />
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Creator\Assets\MC_CreateMatCap.cs" />
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_AutoRotate.cs" />
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_SwitchTexture.cs" />
-     <Compile Include="Assets\QuestButtonForm.cs" />
      <Compile Include="Assets\Scripts\AbstractQuest.cs" />
-     <Compile Include="Assets\Scripts\ButtonMain.cs" />
      <Compile Include="Assets\Scripts\CombineMeshes.cs" />
+     <Compile Include="Assets\Scripts\DatabaseManager.cs" />
      <Compile Include="Assets\Scripts\DetectWithTag.cs" />
+     <Compile Include="Assets\Scripts\Dialogue.cs" />
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\DialogueObject.cs" />
      <Compile Include="Assets\Scripts\DoorMain.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyEditor.cs" />
      <Compile Include="Assets\Scripts\Input\MyInputAction.cs" />
+     <Compile Include="Assets\Scripts\InteractionEvent.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\PlayerFollow.cs" />
+     <Compile Include="Assets\Scripts\QuestButtonForm.cs" />
      <Compile Include="Assets\Scripts\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Range2Attribute.cs" />
      <Compile Include="Assets\Scripts\Range2Drawer.cs" />
@@ -87,6 +88,7 @@
      <Compile Include="Assets\ScriptsEditor\TagAttribute.cs" />
      <Compile Include="Assets\ScriptsEditor\TagDrawer.cs" />
      <Compile Include="Assets\ScriptsEditor\WindowExample.cs" />
+     <Compile Include="Assets\SelectOnEnable.cs" />
      <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
      <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
      <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />
@@ -128,7 +130,7 @@
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Lit.shader" />
      <None Include="Assets\Shaders\Part14_FresnelOutLine.shader" />
      <None Include="Assets\Shaders\Metallic_And_Smoothness.shader" />
-     <None Include="Assets\Source\MyText.txt" />
+     <None Include="Assets\Resources\MyText.txt" />
      <None Include="Assets\Shaders\CustomLambert.shader" />
      <None Include="Assets\Shaders\Part18_RampTexture_Flash.shader" />
      <None Include="Assets\unity-chan!\Unity-chan! Model\Audio\Voice\unity-chan_voice_list.txt" />
@@ -141,6 +143,7 @@
      <None Include="Assets\Shaders\Fire_Using_Shader2.shader" />
      <None Include="Assets\Shaders\Part16_AlphaBlend.shader" />
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureAdd.shader" />
+     <None Include="Assets\Modular Castle\Castle_ReadMe.txt" />
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureAdd_Bumped.shader" />
      <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
      <None Include="Assets\Shaders\CustomFresnel.shader" />
@@ -760,6 +763,9 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Projects/Surface_Shader/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>C:/Projects/Surface_Shader/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -44,14 +44,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Tab",
-                    "type": "Button",
-                    "id": "52179715-b1d0-4ff5-9f74-003c47ef4f3b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -307,17 +299,6 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c80708a-b4a6-4448-9f8f-ac0a16570ba1",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Tab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -327,7 +308,7 @@
             "actions": [
                 {
                     "name": "Navigate",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "28ec6fcc-300a-41db-97e0-359699c66717",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -335,7 +316,7 @@
                 },
                 {
                     "name": "Submit",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "d83320cc-320b-40d2-aa14-edb67d36e0e6",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -343,7 +324,7 @@
                 },
                 {
                     "name": "Cancel",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "7a975983-5fbb-4e93-8a20-4131d0982248",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -684,6 +665,17 @@
                 },
                 {
                     "name": "",
+                    "id": "db29cb11-d561-4b49-a375-dcfeeada515a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
                     "path": "*/{Cancel}",
                     "interactions": "",
@@ -822,6 +814,52 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UIInt",
+            "id": "92156ea8-efde-48ab-82b2-3a7b6c2ae00c",
+            "actions": [
+                {
+                    "name": "Tab",
+                    "type": "Button",
+                    "id": "04d4d93b-4dcf-4487-9502-a820c4c0b0fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "874264fc-464d-4c3d-9d05-93d903de06a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "31b22aa7-f265-4ddf-8cbc-b88381b5e77a",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0e7c600-95eb-44e5-8c40-7237e15660ce",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

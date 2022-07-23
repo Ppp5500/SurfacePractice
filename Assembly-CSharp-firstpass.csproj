@@ -670,6 +670,9 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Projects/Surface_Shader/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>C:/Projects/Surface_Shader/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

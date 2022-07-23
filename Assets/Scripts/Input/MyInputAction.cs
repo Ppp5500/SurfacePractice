@@ -57,14 +57,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Tab"",
-                    ""type"": ""Button"",
-                    ""id"": ""52179715-b1d0-4ff5-9f74-003c47ef4f3b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -320,17 +312,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8c80708a-b4a6-4448-9f8f-ac0a16570ba1"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Tab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -340,7 +321,7 @@ public class @MyInputAction : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""28ec6fcc-300a-41db-97e0-359699c66717"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -348,7 +329,7 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Submit"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""d83320cc-320b-40d2-aa14-edb67d36e0e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -356,7 +337,7 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""7a975983-5fbb-4e93-8a20-4131d0982248"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -697,6 +678,17 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""db29cb11-d561-4b49-a375-dcfeeada515a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""82627dcc-3b13-4ba9-841d-e4b746d6553e"",
                     ""path"": ""*/{Cancel}"",
                     ""interactions"": """",
@@ -839,6 +831,52 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UIInt"",
+            ""id"": ""92156ea8-efde-48ab-82b2-3a7b6c2ae00c"",
+            ""actions"": [
+                {
+                    ""name"": ""Tab"",
+                    ""type"": ""Button"",
+                    ""id"": ""04d4d93b-4dcf-4487-9502-a820c4c0b0fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""874264fc-464d-4c3d-9d05-93d903de06a3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""31b22aa7-f265-4ddf-8cbc-b88381b5e77a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Tab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0e7c600-95eb-44e5-8c40-7237e15660ce"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -911,7 +949,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Tab = m_Player.FindAction("Tab", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -924,6 +961,10 @@ public class @MyInputAction : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // UIInt
+        m_UIInt = asset.FindActionMap("UIInt", throwIfNotFound: true);
+        m_UIInt_Tab = m_UIInt.FindAction("Tab", throwIfNotFound: true);
+        m_UIInt_Interact = m_UIInt.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -978,7 +1019,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Tab;
     public struct PlayerActions
     {
         private @MyInputAction m_Wrapper;
@@ -988,7 +1028,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Tab => m_Wrapper.m_Player_Tab;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1013,9 +1052,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Tab.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
-                @Tab.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
-                @Tab.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTab;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1035,9 +1071,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Tab.started += instance.OnTab;
-                @Tab.performed += instance.OnTab;
-                @Tab.canceled += instance.OnTab;
             }
         }
     }
@@ -1147,6 +1180,47 @@ public class @MyInputAction : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // UIInt
+    private readonly InputActionMap m_UIInt;
+    private IUIIntActions m_UIIntActionsCallbackInterface;
+    private readonly InputAction m_UIInt_Tab;
+    private readonly InputAction m_UIInt_Interact;
+    public struct UIIntActions
+    {
+        private @MyInputAction m_Wrapper;
+        public UIIntActions(@MyInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Tab => m_Wrapper.m_UIInt_Tab;
+        public InputAction @Interact => m_Wrapper.m_UIInt_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_UIInt; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIIntActions set) { return set.Get(); }
+        public void SetCallbacks(IUIIntActions instance)
+        {
+            if (m_Wrapper.m_UIIntActionsCallbackInterface != null)
+            {
+                @Tab.started -= m_Wrapper.m_UIIntActionsCallbackInterface.OnTab;
+                @Tab.performed -= m_Wrapper.m_UIIntActionsCallbackInterface.OnTab;
+                @Tab.canceled -= m_Wrapper.m_UIIntActionsCallbackInterface.OnTab;
+                @Interact.started -= m_Wrapper.m_UIIntActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_UIIntActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_UIIntActionsCallbackInterface.OnInteract;
+            }
+            m_Wrapper.m_UIIntActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Tab.started += instance.OnTab;
+                @Tab.performed += instance.OnTab;
+                @Tab.canceled += instance.OnTab;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+            }
+        }
+    }
+    public UIIntActions @UIInt => new UIIntActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1199,7 +1273,6 @@ public class @MyInputAction : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnTab(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1213,5 +1286,10 @@ public class @MyInputAction : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IUIIntActions
+    {
+        void OnTab(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

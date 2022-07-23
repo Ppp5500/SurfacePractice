@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 퀘스트를 다루기 위한 가상 클래스
+// 이 클래스를 상속 받으면 생성 시 자동으로 QuestManager에 등록됨
 namespace SimpleName
 {
     public abstract class Quest

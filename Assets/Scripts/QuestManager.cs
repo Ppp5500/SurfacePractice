@@ -8,7 +8,6 @@ namespace SimpleName
 {
     public class QuestManager : MonoBehaviour
     {
-        //private List<Quest> _quests = new List<Quest>();
         private Dictionary<string, Quest> dQuests = new Dictionary<string, Quest>();
 
         public static QuestManager Instance;
@@ -31,7 +30,6 @@ namespace SimpleName
         {
             dQuests.Add(_quest.questName, _quest);
             AddToScrollView(_quest.questName);
-
         }
 
         private void AddToScrollView(string _questName)
@@ -72,7 +70,6 @@ namespace SimpleName
                 questPanel.SetActive(true);
                 return true;
             }
-                
         }
     }
 }
